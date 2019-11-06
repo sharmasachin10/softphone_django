@@ -31,6 +31,9 @@ def make_call(request):
 @csrf_exempt
 def receive_call(request):
     # Generate a Speak XML with the details of the text to play on the call.
+    response = plivoxml.ResponseElement()
+    response.add(plivoxml.PlayElement('/home/sachin/Downloads/ring.mp3'))
+    print(response.to_string())
     body = "Hello, you just received your first call"
     r = plivoxml.ResponseElement()
     r.add_speak(body)
@@ -44,3 +47,4 @@ def receive_call(request):
 @csrf_exempt
 def hangup_call(request):
     print("hangup_call----------------",request)
+    
