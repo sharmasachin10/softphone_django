@@ -43,4 +43,4 @@ def receive_call(request):
 #Receive Call
 @csrf_exempt
 def hangup_call(request):
-    print("hangup_call----------------")
+    print("hangup_call----------------",request)
