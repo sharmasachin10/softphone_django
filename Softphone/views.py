@@ -2,7 +2,9 @@ from django.shortcuts import render
 import plivo
 from plivo import plivoxml
 from .plivo_creds import *
-from django.views.decorators.csrf import csrf_exempt 
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from django.shortcuts import redirect 
 
 ##############################################FUNCTIONS##################################################
 #Home
@@ -31,4 +33,5 @@ def receive_call(request):
     r.add_speak(body)
 
     print (r.to_string())
-    return Response(str(r), mimetype='text/xml')
+    #return HttpResponse(str(r))
+    return redirect("/")
