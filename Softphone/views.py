@@ -23,7 +23,7 @@ def make_call(request):
 
 #Receive Call
 @csrf_exempt
-def receive_call():
+def receive_call(request):
     # Generate a Speak XML with the details of the text to play on the call.
     body = "Hello, you just received your first call"
     r = plivoxml.Response()
