@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="wrapper fadeInDown">
+	  <div id="formContent">
+	    <!-- Tabs Titles -->
+
+	    <!-- Icon -->
+	    <div class="fadeIn first">
+	      <img src="/static/images/call_button.png" id="icon" alt="Call Icon" />
+	    </div>
+
+	    <!-- Login Form -->
+	    <form method="POST" action="/make_call/">{% csrf_token %}
+	      <input type="text" id="call_num" class="fadeIn second" name="call_number" placeholder="Enter the number to be called" required>
+	      <input type="submit" class="fadeIn fourth" value="Make Call">
+	    </form>
+
+	    <!-- Remind Passowrd -->
+	    <div id="formFooter">
+	      <a class="underlineHover" href="#">PlanMiner SoftPone</a>
+	    </div>
+
+	  </div>
+	</div>
+{% endblock %}
+
