@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import plivo
+from plivo import plivoxml
 from .plivo_creds import *
 from django.views.decorators.csrf import csrf_exempt 
 
@@ -26,8 +27,8 @@ def make_call(request):
 def receive_call(request):
     # Generate a Speak XML with the details of the text to play on the call.
     body = "Hello, you just received your first call"
-    r = plivoxml.Response()
-    r.addSpeak(body)
+    r = plivoxml.ResponseElement()
+    r.add_speak(body)
 
-    print (r.to_xml())
+    print (r.to_string())
     return Response(str(r), mimetype='text/xml')
