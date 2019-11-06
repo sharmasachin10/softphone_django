@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import plivo
-from .plivo_creds import * 
+from .plivo_creds import *
+from django.views.decorators.csrf import csrf_exempt 
 
 ##############################################FUNCTIONS##################################################
 #Home
@@ -9,7 +10,6 @@ def index(request):
 
 #Make Call
 def make_call(request):
-    print("index.html>>",request.POST,auth_id)
     to_number = request.POST.get("call_number")
     client = plivo.RestClient(auth_id=auth_id, auth_token=auth_token)
     call_made = client.calls.create(
@@ -22,6 +22,7 @@ def make_call(request):
 
 
 #Receive Call
+@csrf_exempt
 def receive_call():
     # Generate a Speak XML with the details of the text to play on the call.
     body = "Hello, you just received your first call"
