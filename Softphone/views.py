@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.shortcuts import redirect 
 
+
+
 ##############################################FUNCTIONS##################################################
 #Home
 def index(request):
@@ -20,6 +22,7 @@ def make_call(request):
         to_=to_number,
         answer_url=answer_url
     )
+    print("call_made----------------",call_made)
     return render(request, "call_progress.html", {})
 
 
@@ -35,3 +38,9 @@ def receive_call(request):
     print (r.to_string())
     #return HttpResponse(str(r))
     return redirect("/")
+
+
+#Receive Call
+@csrf_exempt
+def hangup_call(request):
+    print("hangup_call----------------")

@@ -26,4 +26,5 @@ urlpatterns = [
     ######################################CALL URLS####################################################
     path('make_call/', make_call, name='make_call'),
     path('receive_call/', receive_call, name='receive_call'),
+    path('hangup_call/', hangup_call, name='hangup_call'),
 ]
