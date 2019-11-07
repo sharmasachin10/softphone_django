@@ -32,7 +32,7 @@ def make_call(request):
 def receive_call(request):
     # Generate a Speak XML with the details of the text to play on the call.
     response = plivoxml.ResponseElement()
-    response.add(plivoxml.PlayElement('/home/Softphone/softphone_django/static/audio/ring.mp3'))
+    response.add(plivoxml.PlayElement('/home/sachin/Downloads/ring.mp3'))
     print(response.to_string())
     body = "Hello, you just received your first call"
     r = plivoxml.ResponseElement()
