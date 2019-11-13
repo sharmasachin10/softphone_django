@@ -1,0 +1,74 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% block content %}
+	<section id="content_fluid" class="col-md" style="padding-top: 0px;display: flex;flex-wrap: wrap;">
+    <div class="row" style="width: 100%;">
+        <div class="wrap-content" style="width:100%">
+            <div class="campaign-content">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a>Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Accounts</li>
+                  </ol>
+                </nav>
+                <a href="/createNewAgent/"><button class="btn btn-primary" name="createagent" type="button"
+                style="margin-left: 1172px;margin-top: -6px;">
+                    <span>Add New Agent</span>
+                </button></a><br><br>
+                <a href="/createClientAccount/"><button class="btn btn-primary" name="createcampaign" type="button"
+                style="margin-left: 1161px;margin-top: -6px;">
+                    <span>Create New Account</span>
+                </button></a>
+            </div><br>
+            <div class="campaign-detail table-responsive">
+                <table id="clients_table" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="check">
+                                    <input type="checkbox" class="check mr-1" id="clientname">
+                                    <a style="color:black;">Client Name</a>
+                                </div>
+                            </th>
+                            <th scope="col" class="text-center" style="color:black;">Client ID</th>
+                            <th scope="col" class="text-center" style="color:black;">Date Created</th>
+                            <th scope="col" class="status" style="color:#ffffff;color:black;">Location</th>
+                            <th scope="col" class="status" style="color:#ffffff;color:black;">Phone</th>
+                            <th scope="col" class="text-center" style="color:black;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{% for client in clients_list %}
+                        <tr>
+                            <th scope="row">
+                                <div class="check">
+                                    <!-- <input type="checkbox" class="check mr-1" id="backtoschool"> -->
+                                    <a>{{ client.client_name }}</a>
+                                </div>
+                            </th>
+                            <td class="text-center">{{ client.client_id }}</td>
+                            <td class="text-center">{{ client.date_created }}</td>
+                            <td class="text-center">{{ client.city }}</td>
+                            <th scope="col" class="status" style="color:#ffffff;color:black;">{{ client.phone }}</th>
+                            <td class="text-center">
+                                <a href="javascript:void(0)" class="edit_camp" data-id="{{ client.id }}"><i class="far fa-edit"></i></a>
+                                <a href="/delete_campaign/{{ client.id }}/" data-confirm="true"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extra_js%}
+<script type="text/javascript">
+	$(document).ready(function() {
+    	$('#clients_table').DataTable();
+	} );
+
+</script>
+
+{% endblock %}

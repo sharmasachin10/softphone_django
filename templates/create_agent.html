@@ -1,0 +1,62 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% block content %}
+	<section id="content_fluid" class="col-md" style="padding-top: 0px;display: flex;flex-wrap: wrap;">
+    <div class="row" style="width: 100%;">
+        <div class="wrap-content" style="width:100%">
+            <div class="campaign-content">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href='/adminDashboard/'>Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Create Agent</li>
+                  </ol>
+                </nav>
+            </div>
+        </div>
+    </div><br>
+    <div class="campaign-detail table-responsive">
+        <div class="alert alert-success" id="success_message" style="display: none;">
+          <strong>Success!</strong>Agent Created Successfully!!!
+        </div>
+        <div class="alert alert-danger" id="empty_fields_error" style="display: none;">
+          <strong>Error!</strong>Please fill all the fields!!!
+        </div>
+        <div class="alert alert-danger" id="invalid_email_error" style="display: none;">
+          <strong>Error!</strong>Invalid email address!!!
+        </div>
+        <div class="alert alert-danger" id="server_error" style="display: none;">
+
+        </div>
+
+        <!-- Default form login -->
+        <form class="text-center border border-light p-5">
+
+            <p class="h4 mb-4">Create Agent</p>
+
+            <input type="text" id="f_name" class="form-control mb-4" placeholder="First Name">
+
+            <input type="text" id="l_name" class="form-control mb-4" placeholder="Last Name">
+
+            <!-- Email -->
+            <input type="email" id="email" class="form-control mb-4" placeholder="E-mail">
+
+            <!-- Password -->
+            <input type="password" id="password" class="form-control mb-4" placeholder="Password">
+
+
+            <input type="text" id="phone" class="form-control mb-4" placeholder="Phone Number">
+
+            <input type="text" id="role" class="form-control mb-4" placeholder="Role">
+            <!-- Sign in button -->
+            <input type=button class="btn btn-primary" value="Create" id="create_agent_button">
+
+            <!-- Register -->
+
+        </form>
+        <!-- Default form login -->
+    </div>
+</section>
+{% endblock %}
+{% block extra_js%}
+<script src="{% static 'js/admin_controller.js' %}"></script>
+{% endblock %}

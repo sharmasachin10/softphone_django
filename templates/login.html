@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	<div class="sidenav">
+         <div class="login-main-text">
+            <h2>Application<br> Login Page</h2>
+            <p>Login as Admin or Agent from here to access.</p>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12" style="margin-top: -150px">
+            <div class="login-form">
+            	<div class="alert alert-danger" id="empty_fields_error" style="display: none;">
+				  <strong>Error!</strong> Please Fill all fields!!!
+				</div>
+				<div class="alert alert-danger" id="server_error" style="display: none;">
+				 
+				</div>
+                <form>
+                  	<div class="form-group">
+                     	<label>User Name</label>
+                     	<input type="text" class="form-control" id="username" placeholder="User Name">
+                  	</div>
+
+                  	<div class="form-group">
+                     	<label>Password</label>
+                     	<input type="password" class="form-control" id="password" placeholder="Password">
+                  	</div>
+
+                  	<div class="form-group">
+					    <label for="exampleFormControlSelect1">Role</label>
+					    <select class="form-control" id="role">
+					      <option value="">---Select Role----</option>
+					      <option value="admin">Admin</option>
+					      <option value="agent">Agent</option>
+					    </select>
+					 </div>
+
+
+                    <input type="text" class="btn btn-success" id="login_button" value="Login">
+                </form>
+            </div>
+         </div>
+      </div>
+{% endblock %}
+{% block extra_js%}
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock %}

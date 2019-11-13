@@ -23,8 +23,18 @@ urlpatterns = [
     ######################################Home Page####################################################
     path('', index, name='index'),
 
-    ######################################CALL URLS####################################################
-    path('make_call/', make_call, name='make_call'),
-    path('receive_call/', receive_call, name='receive_call'),
-    path('hangup_call/', hangup_call, name='hangup_call'),
+    ######################################URLS#########################################################
+    path('loginUser/', loginUser, name='loginUser'),
+    path('logoutUser/', logoutUser, name='logoutUser'),
+
+    ######################################ADMIN URLS#########################################################
+    path('adminDashboard/', adminDashboard, name='adminDashboard'),
+    path('createClientAccount/', createClientAccount, name='createClientAccount'),
+
+
+
+    ######################################AGENT URLS#########################################################
+    path('agentDashboard/', agentDashboard, name='agentDashboard'),
+    path('createNewAgent/', createNewAgent, name='createNewAgent'),
+    
 ]

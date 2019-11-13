@@ -1,0 +1,67 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% block content %}
+    <section id="content_fluid" class="col-md" style="padding-top: 0px;display: flex;flex-wrap: wrap;">
+    <div class="row" style="width: 100%;">
+        <div class="wrap-content" style="width:100%">
+            <div class="campaign-content">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a>Agent</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                  </ol>
+                </nav>
+            </div><br>
+            <h3>Agent : {{ request.user.first_name }} {{ request.user.last_name }}</h3><br>
+            <div class="campaign-detail table-responsive">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#call_1">Call 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#call_2">Call 2</a>
+                  </li>
+                  
+                </ul>
+                <div class="tab-content">
+                    <!-- Call1 Info -->
+                    <div role="tabpanel" class="tab-pane active" id="call_1">
+                        <ul class="list-group media-list media-list-stream">
+                    
+                        </ul>
+                        
+                        <form class="text-center border border-light p-5" action="#!">
+
+                            <p class="h4 mb-4">Call Details</p>
+
+                            <div class="form-group">
+                              <label for="comment">Message:</label>
+                              <textarea class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+   
+                        </form>
+                    </div>
+                    <!-- Call2 Info -->
+                    <div role="tabpanel" class="tab-pane fade in" id="call_2">
+                        <ul class="list-group media-list media-list-stream">
+                            
+                        </ul>
+                        <form class="text-center border border-light p-5" action="#!">
+
+                            <p class="h4 mb-4">Call Details</p>
+                            <div class="form-group">
+                              <label for="comment">Message:</label>
+                              <textarea class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extra_js%}
+
+
+{% endblock %}
