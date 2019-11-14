@@ -68,10 +68,73 @@ def logoutUser(request):
 def adminDashboard(request):
     return render(request, "admin_dashboard.html", {})
 
+
+#Clients View
+@login_required(login_url='/')
+def clients(request):
+    return render(request, "clients_view.html", {})
+
+
+#Agents View
+@login_required(login_url='/')
+def agents(request):
+    agents_list = []
+    agents_dict = {'id':'','first_name':'','last_name':'','email':'', 'role':'', 'phone':'', 'date_joined':''}
+    agents_data = Agents.objects.all()
+    for agent in agents_data:
+        print('agent',agent.user_ref.first_name)
+        agents_dict['id']=agent.id
+        agents_dict['role']=agent.role
+        agents_dict['phone']=agent.phone_number
+        agents_dict['first_name']=agent.user_ref.first_name
+        agents_dict['last_name']=agent.user_ref.last_name
+        agents_dict['email']=agent.user_ref.email
+        agents_dict['date_joined']=agent.user_ref.date_joined
+        agents_list.append(agents_dict.copy())
+    return render(request, "agents_view.html", {'agents':agents_list})
+
+
+#Delete Agent
+@login_required(login_url='/')
+def deleteAgent(request,agent_id):
+    try:
+        print('here in delete',agent_id)
+        agent_data = Agents.objects.filter(id=str(agent_id))
+        for data in agent_data:
+            user_id = data.user_ref.id
+            user_instance = User.objects.get(id=user_id)
+        agent_data.delete()
+        user_instance.delete()
+        return redirect('/agents/')
+    except Exception as e:
+        print('error in deleteAgent',e)
+
 #Create Account
+@csrf_exempt
 @login_required(login_url='/')
 def createClientAccount(request):
-    return render(request, "create_client.html", {})
+    if(request.method=='GET'):
+        return render(request, "create_client.html", {})
+    else:
+        try:
+            if request.method == 'POST':
+                print('>>>>>.',request.POST)
+                #Customer Details
+                client_name = request.POST.get('client_name')
+                client_id = request.POST.get('client_id')
+                switch_id = request.POST.get('switch_id')
+                client_exists = Clients.objects.get(client_id=client_id)
+                if client_exists:
+                    return JsonResponse({'status':'error','message':'Client with same client id already exists'})
+                else:
+                    client_data = Clients.objects.create(client_name=client_name, client_id=client_id,
+                        switch_id=switch_id)
+                    client_data.save()
+
+                client_info = Clients.objects.get(client_id=client_id)
+
+        except Exception as e:
+            print('error in createClientAccount')
 
 
 #Create New Agent

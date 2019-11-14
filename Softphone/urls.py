@@ -29,6 +29,9 @@ urlpatterns = [
 
     ######################################ADMIN URLS#########################################################
     path('adminDashboard/', adminDashboard, name='adminDashboard'),
+    path('clients/', clients, name='clients'),
+    path('agents/', agents, name='agents'),
+    path('delete_agent/<int:agent_id>/', deleteAgent, name='deleteAgent'),
     path('createClientAccount/', createClientAccount, name='createClientAccount'),
 
 
@@ -36,5 +39,7 @@ urlpatterns = [
     ######################################AGENT URLS#########################################################
     path('agentDashboard/', agentDashboard, name='agentDashboard'),
     path('createNewAgent/', createNewAgent, name='createNewAgent'),
+
+    
     
 ]

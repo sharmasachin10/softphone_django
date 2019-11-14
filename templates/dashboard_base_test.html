@@ -1,0 +1,99 @@
+{% load static %}
+{% block head %}
+  <head>
+    {% block meta %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+    {% endblock %}
+
+    {% block title %}
+      <title>AnswerService</title>
+    {% endblock %}
+    {% block css %}
+      <!-- Bootstrap core CSS -->
+      <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+    {% endblock %}
+    {% block extra_css %}
+      <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+    {% endblock %}
+  </head>
+{% endblock %}
+
+{% block main %}
+  <div class="d-flex" id="wrapper">
+
+    {% block sidebar %}
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Logo </div>
+      <div class="list-group list-group-flush">
+        <a href="/clients/" class="list-group-item list-group-item-action bg-light">Clients</a>
+        <a href="/agents/" class="list-group-item list-group-item-action bg-light">Agents</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    {% endblock %}
+    
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Welcome {{ request.user }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logoutUser/">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {% endblock %}
+
+        {% block content %}
+
+        <div class="container-fluid">
+          <h1 class="mt-4">Welcome {{ request.user}}</h1>
+          <p>Please select an option from left sidebar</p>
+        </div>
+      </div>
+      <!-- /#page-content-wrapper -->
+    {% endblock %}
+  </div>
+  <!-- /#wrapper -->
+{% endblock %}
+{% block js %}
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"
+     ></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+{% endblock %}
+{% block extra_js %}
+{% endblock %}
